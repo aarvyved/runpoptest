@@ -79,26 +79,26 @@ pipelines:
       - name: IN_TEST
         type: Bash
         configuration:
+          outputResources:
+            - name: git
+            - name: git_SANDWICH
           inputResources:
             - name: git_IN
             - name: buildInfo2
             - name: buildInfo3
             - name: buildInfo4
             - name: buildInfo5
-          outputResources:
-            - name: git
-            - name: git_SANDWICH
           execution:
             onExecute:
             - sleep 10
-      - name: IN_TEST_OUT
-        type: Bash
-        configuration:
-          inputResources:
-            - name: git_SANDWICH
-              trigger: false
-          inputSteps:
-            - name: IN_TEST
-        execution:
-          onExecute:
-            - sleep 10
+#       - name: IN_TEST_OUT
+#         type: Bash
+#         configuration:
+#           inputResources:
+#             - name: git_SANDWICH
+#               trigger: false
+#           inputSteps:
+#             - name: IN_TEST
+#         execution:
+#           onExecute:
+#             - sleep 10
