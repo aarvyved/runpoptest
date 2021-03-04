@@ -102,7 +102,7 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: git_OUT
+            - name: git_OUT_1
           outputResources:
             - name: git_OUT_2
         execution:
