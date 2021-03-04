@@ -19,7 +19,22 @@ resources:
     configuration:
       gitProvider: TestIntegration
       path: aarvyved/runpoptest
-  - name: git_OUT
+  - name: git_OUT_1
+    type: GitRepo
+    configuration:
+      gitProvider: TestIntegration
+      path: aarvyved/runpoptest
+  - name: git_OUT_2
+    type: GitRepo
+    configuration:
+      gitProvider: TestIntegration
+      path: aarvyved/runpoptest
+  - name: git_OUT_3
+    type: GitRepo
+    configuration:
+      gitProvider: TestIntegration
+      path: aarvyved/runpoptest
+  - name: git_OUT_4
     type: GitRepo
     configuration:
       gitProvider: TestIntegration
@@ -78,7 +93,7 @@ pipelines:
           inputSteps:
             - name: IN_TEST
           outputResources:
-            - name: git_OUT
+            - name: git_OUT_1
         execution:
           onExecute:
             - sleep 10
@@ -88,27 +103,31 @@ pipelines:
         configuration:
           inputResources:
             - name: git_OUT
-#           affinityGroup: trigger
-#           priority: 0
+          outputResources:
+            - name: git_OUT_2
         execution:
           onExecute:
             - sleep 60
             - echo "done"
-#       - name: trigger_2
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: trigger_1
-#         execution:
-#           onExecute:
-#             - sleep 60
-#             - echo "done"
-#       - name: trigger_3
-#         type: Bash
-#         configuration:
-#           inputSteps:
-#             - name: trigger_2
-#         execution:
-#           onExecute:
-#             - sleep 60
-#             - echo "done"
+      - name: trigger_2
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_OUT_2
+          outputResources:
+            - name: git_OUT_3
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_3
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_OUT_3
+          outputResources:
+            - name: git_OUT_4
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
