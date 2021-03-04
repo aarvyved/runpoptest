@@ -4,6 +4,45 @@ resources:
     configuration:
       key1: value1
       key2: value2
+  - name: git
+    type: GitRepo
+    configuration:
+      gitProvider: gitResource
+      path: aarvyved/runpoptest
+  - name: git_IN
+    type: GitRepo
+    configuration:
+      gitProvider: gitResource
+      path: aarvyved/runpoptest
+  - name: git_SANDWICH
+    type: GitRepo
+    configuration:
+      gitProvider: gitResource
+      path: aarvyved/runpoptest
+  - name: buildInfo2
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
+  - name: buildInfo3
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
+  - name: buildInfo4
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
+  - name: buildInfo5
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: art
+      buildName: backend_build
+      buildNumber: 1
 pipelines: 
   - name: TRIGGER
     steps:
@@ -35,3 +74,31 @@ pipelines:
         execution:
           onExecute:
             - printenv
+  - name: IN
+    steps:
+      - name: IN_TEST
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_IN
+            - name: buildInfo2
+            - name: buildInfo3
+            - name: buildInfo4
+            - name: buildInfo5
+          outputResources:
+            - name: git
+            - name: git_SANDWICH
+          execution:
+            onExecute:
+            - sleep 10
+      - name: IN_TEST_OUT
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_SANDWICH
+              trigger: false
+          inputSteps:
+            - name: IN_TEST
+        execution:
+          onExecute:
+            - sleep 10
