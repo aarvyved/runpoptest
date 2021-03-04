@@ -88,17 +88,17 @@ pipelines:
             - name: buildInfo3
             - name: buildInfo4
             - name: buildInfo5
-          execution:
+        execution:
             onExecute:
             - sleep 10
-#       - name: IN_TEST_OUT
-#         type: Bash
-#         configuration:
-#           inputResources:
-#             - name: git_SANDWICH
-#               trigger: false
-#           inputSteps:
-#             - name: IN_TEST
-#         execution:
-#           onExecute:
-#             - sleep 10
+      - name: IN_TEST_OUT
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_SANDWICH
+              trigger: false
+          inputSteps:
+            - name: IN_TEST
+        execution:
+          onExecute:
+            - sleep 10
