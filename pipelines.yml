@@ -76,3 +76,30 @@ pipelines:
           onExecute:
             - sleep 10
             - echo "done"
+      - name: trigger_1
+        type: Bash
+        configuration:
+          affinityGroup: trigger
+          priority: 0
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_1
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_3
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_2
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
