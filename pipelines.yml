@@ -63,6 +63,7 @@ pipelines:
         execution:
             onExecute:
             - sleep 10
+            - echo "done"
       - name: IN_TEST_OUT
         type: Bash
         configuration:
