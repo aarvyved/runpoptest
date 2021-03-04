@@ -72,6 +72,8 @@ pipelines:
               trigger: false
           inputSteps:
             - name: IN_TEST
+          outputResources:
+            - name: git_IN
         execution:
           onExecute:
             - sleep 10
@@ -79,27 +81,29 @@ pipelines:
       - name: trigger_1
         type: Bash
         configuration:
-          affinityGroup: trigger
-          priority: 0
+          inputResources:
+            - name: git_IN
+#           affinityGroup: trigger
+#           priority: 0
         execution:
           onExecute:
             - sleep 60
             - echo "done"
-      - name: trigger_2
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: trigger_1
-        execution:
-          onExecute:
-            - sleep 60
-            - echo "done"
-      - name: trigger_3
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: trigger_2
-        execution:
-          onExecute:
-            - sleep 60
-            - echo "done"
+#       - name: trigger_2
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: trigger_1
+#         execution:
+#           onExecute:
+#             - sleep 60
+#             - echo "done"
+#       - name: trigger_3
+#         type: Bash
+#         configuration:
+#           inputSteps:
+#             - name: trigger_2
+#         execution:
+#           onExecute:
+#             - sleep 60
+#             - echo "done"
