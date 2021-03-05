@@ -39,6 +39,11 @@ resources:
     configuration:
       gitProvider: TestIntegration
       path: aarvyved/runpoptest
+  - name: git_OUT_5
+    type: GitRepo
+    configuration:
+      gitProvider: TestIntegration
+      path: aarvyved/runpoptest
 pipelines: 
   - name: TRIGGER
     steps:
@@ -93,10 +98,21 @@ pipelines:
           inputSteps:
             - name: IN_TEST
           outputResources:
-            - name: git_OUT_1
+            - name: git_OUT_5
         execution:
           onExecute:
             - sleep 10
+            - echo "done"
+      - name: trigger
+        type: Bash
+        configuration:
+          inputResources:
+            - name: git_OUT_5
+          outputResources:
+            - name: git_OUT_1
+        execution:
+          onExecute:
+            - sleep 60
             - echo "done"
       - name: trigger_1
         type: Bash
