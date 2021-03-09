@@ -7,7 +7,7 @@ resources:
   - name: git
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_IN
     type: GitRepo
