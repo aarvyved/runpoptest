@@ -12,37 +12,37 @@ resources:
   - name: git_IN
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_SANDWICH
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_OUT_1
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_OUT_2
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_OUT_3
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_OUT_4
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
   - name: git_OUT_5
     type: GitRepo
     configuration:
-      gitProvider: TestIntegration
+      gitProvider: GitIntegration
       path: aarvyved/runpoptest
 pipelines: 
   - name: TRIGGER
