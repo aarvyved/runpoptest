@@ -81,17 +81,7 @@ pipelines:
         type: Bash
         configuration:
           outputResources:
-            - name: git
-          inputResources:
             - name: git_IN
-        execution:
-            onExecute:
-              - sleep 10
-              - echo "done"
-      - name: IN_TEST
-        type: Bash
-        configuration:
-          outputResources:
             - name: git_SANDWICH
           inputResources:
             - name: git
