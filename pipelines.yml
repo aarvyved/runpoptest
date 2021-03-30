@@ -44,37 +44,7 @@ resources:
     configuration:
       gitProvider: GitIntegration
       path: aarvyved/runpoptest
-pipelines: 
-  - name: TRIGGER
-    steps:
-      - name: TRIGGER
-        type: Bash
-        configuration:
-          outputResources:
-            - name: prop1
-        execution:
-          onExecute:
-            - write_output prop1 runId=$run_number
-  - name: TRIGGER_OUT_1
-    steps:
-      - name: TRIGGER_OUT_1
-        type: Bash
-        configuration:
-          inputResources:
-            - name: prop1
-        execution:
-          onExecute:
-            - printenv
-  - name: TRIGGER_OUT_2
-    steps:
-      - name: TRIGGER_OUT_2
-        type: Bash
-        configuration:
-          inputResources:
-            - name: prop1
-        execution:
-          onExecute:
-            - printenv
+pipelines:
   - name: IN
     steps:
       - name: IN_TEST
