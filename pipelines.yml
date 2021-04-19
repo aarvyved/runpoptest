@@ -82,7 +82,7 @@ pipelines:
             - name: git_OUT_1
         execution:
           onExecute:
-            - sleep 60
+            - sleep 10
             - echo "done"
       - name: trigger_1
         type: Bash
@@ -93,7 +93,7 @@ pipelines:
             - name: git_OUT_2
         execution:
           onExecute:
-            - sleep 60
+            - sleep 10
             - echo "done"
       - name: trigger_2
         type: Bash
@@ -104,7 +104,7 @@ pipelines:
             - name: git_OUT_3
         execution:
           onExecute:
-            - sleep 60
+            - sleep 10
             - echo "done"
       - name: trigger_3
         type: Bash
@@ -115,5 +115,5 @@ pipelines:
             - name: git_OUT_4
         execution:
           onExecute:
-            - sleep 60
+            - sleep 10
             - echo "done"
